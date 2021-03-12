@@ -35,6 +35,36 @@ Features target for future implementantions:
 - RuSLo\Loader\SwooleToSuperGlobals
 - RuSLo\Loader\RoadRunnerToSuperGlobals
 
+## Expected utilization
+```php
+<?php
+
+use RuSLo\Executor;
+use RuSLo\InputAdapter\CLIArgvToPost;
+
+// --- Mode 1 ---
+$executor = new Executor(new AWSLambdaToSuperGlobals());
+
+$executor->run(function () {
+  // your application execution
+  // global access to _POST _GET _FILES _SERVER _SESSION _COOKIES
+  var_dump($_SERVER);
+});
+
+// --- Mode 2 just the loader ---
+$bootstraper = new Bootstraper(new CLIToSuperGlobals(new CLIArgvToPost));
+
+// Maybe in future
+// $bootstraper = new BoostrapCLIArgvToPost();
+
+$bootstraper->load();
+
+// exec via CLI ex: php index.php --name=Leonardo
+// the result will be:
+// array ("name" => "Leonardo")
+var_dump($_POST);
+```
+
 **This is an experimental component, please report any bug or problem, everyone is free to colaborate, thank you.**
 
 This is a start, so there is only the branch **main** yet.
