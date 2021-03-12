@@ -17,7 +17,7 @@ It'll help to migrate your app to performant async servers using libs like: PHPR
 Here's a list of the implementantions that we need:
 
 Boot:
-- Create RuSLo\Loader\Bootstrap
+- Create RuSLo\Loader\Bootstraper
 - Create RuSLo\Loader\Interface\Input
 - Create RuSLo\Loader\Interface\GlobalsLoader
 - Code RuSLo\Loader\AWSLambdaToSuperGlobals
@@ -40,6 +40,7 @@ Features target for future implementantions:
 <?php
 
 use RuSLo\Executor;
+use RuSLo\Loader\Bootstraper;
 use RuSLo\InputAdapter\CLIArgvToPost;
 
 // --- Mode 1 ---
